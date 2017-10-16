@@ -4,11 +4,11 @@
 
 Request:
 
- `localhost:8080/fillArray?param1=3&fill=Fer`
+ `localhost:8080/fillArray?size=3&fill=Fer`
 
 Response:
 
-<table border=1>
+<table border=1 width="100%">
 <tbody>
     <tr>
         <td>Fer</td>
