@@ -16,6 +16,9 @@ public class CounterServlet extends HttpServlet {
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException {
+        if (request.getParameter("reset") != null) {
+            counter = 0;
+        }
 
         counter++;
 
