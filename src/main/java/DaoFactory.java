@@ -8,7 +8,7 @@ public class DaoFactory {
     // factory method
     public static Users getUsersDao() {
         if (usersDao == null) {
-            return new UsersArrayList();
+            usersDao = new EmptyUsers();
         }
         return  usersDao;
     }
