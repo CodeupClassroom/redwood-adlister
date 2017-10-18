@@ -22,8 +22,7 @@ public class CounterServlet extends HttpServlet {
 
         counter++;
 
-        response.getWriter().print(
-            "<h1>You have visited this page " + counter + " times</h1>"
-        );
+        request.setAttribute("counter", counter);
+        request.getRequestDispatcher("counter.jsp").forward(request, response);
     }
 }
