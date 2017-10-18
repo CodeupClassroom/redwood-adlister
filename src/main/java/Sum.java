@@ -1,3 +1,4 @@
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,14 +8,16 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "SumServlet", urlPatterns = "/sum")
 public class Sum extends HttpServlet {
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int a=0, b=0;
+    protected void doGet(
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws IOException, ServletException {
+        int a, b;
         a = Integer.parseInt(request.getParameter("num1"));
         b = Integer.parseInt(request.getParameter("num2"));
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<h3>Sum res: " +(a+b)+ "</h3>");
-    }
 
+        request.setAttribute("sum", a + b);
+        //sumServlet.doGet(request, response);
+        request.getRequestDispatcher("sum.jsp").forward(request, response);
+    }
 }
