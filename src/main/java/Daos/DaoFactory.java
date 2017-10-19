@@ -1,6 +1,9 @@
-/*
+package Daos;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+import interfaces.Ads;
+import interfaces.Users;
 
 public class DaoFactory {
     private static Users usersDao;
@@ -9,7 +12,7 @@ public class DaoFactory {
     // factory method
     public static Users getUsersDao() {
         if (usersDao == null) {
-            usersDao = new EmptyUsers();
+            usersDao = new UsersMysqlDao();
         }
         return  usersDao;
     }
