@@ -12,7 +12,7 @@ public class DaoFactory {
     // factory method
     public static Users getUsersDao() {
         if (usersDao == null) {
-            usersDao = new EmptyUsers();
+            usersDao = new UsersMysqlDao();
         }
         return  usersDao;
     }
