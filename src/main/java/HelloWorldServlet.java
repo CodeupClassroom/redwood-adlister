@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "hello", urlPatterns = "/")
+@WebServlet(name = "hello", urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
     protected void doGet(
         HttpServletRequest request, //input
