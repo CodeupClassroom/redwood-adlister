@@ -25,9 +25,18 @@ public class UsersMysqlDao implements Users {
         }
     }
 
-    @Override
     public List<User> all() {
+        return all(0L);
+    }
+
+    @Override
+    public List<User> all(Long id) {
         String query = "SELECT * FROM users";
+
+        if(id > 0){
+            query += " WHERE id = " + id;
+        }
+
         List<User> users = new ArrayList<>();
         try {
             Statement stmt = connection.createStatement();
@@ -44,5 +53,24 @@ public class UsersMysqlDao implements Users {
         }
 
         return users;
+    }
+
+    @Override
+    public Long insert(User user) {
+        Long id = 0L;
+        String query = "INSERT INTO users (username, email, password) values('"+ user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')";
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            // In order to get the users id you can do the following:
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                id = rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id;
     }
 }

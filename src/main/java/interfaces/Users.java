@@ -7,6 +7,7 @@ import models.User;
 import java.util.List;
 
 public interface Users {
+    List<User> all(Long id);
     List<User> all();
     Long insert(User user);
 }

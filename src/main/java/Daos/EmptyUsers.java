@@ -8,9 +8,13 @@ import models.User;
 import java.util.Collections;
 import java.util.List;
 
-public class EmptyUsers implements Users {
-    @Override
+public class EmptyUsers  {
+
     public List<User> all() {
         return Collections.emptyList();
+    }
+
+    public Long insert(User user) {
+        return null;
     }
 }

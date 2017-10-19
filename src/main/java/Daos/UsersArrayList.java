@@ -8,8 +8,8 @@ import models.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersArrayList implements Users {
-    @Override
+public class UsersArrayList {
+
     public List<User> all() {
         User user = new User();
         user.setId(1);
@@ -25,5 +25,10 @@ public class UsersArrayList implements Users {
         users.add(zach);
 
         return users;
+    }
+
+
+    public Long insert(User user) {
+        return null;
     }
 }
