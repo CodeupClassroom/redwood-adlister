@@ -1,6 +1,9 @@
 package servlets;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+import Daos.DaoFactory;
+import interfaces.Users;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

@@ -1,7 +1,7 @@
 package servlets;
 
 import Daos.DaoFactory;
-import objs.Ad;
+import models.Ad;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,6 +1,6 @@
 package interfaces;
 
-import objs.Ad;
+import models.Ad;
 
 import java.util.List;
 

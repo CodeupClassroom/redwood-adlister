@@ -1,21 +1,20 @@
 package Daos;
 
-import com.mysql.jdbc.Driver;
+import com.mysql.cj.jdbc.Driver;
 import interfaces.Users;
-import objs.User;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import models.User;
+import java.sql.*;
 import java.util.List;
 
 public class UsersMysqlDao implements Users {
+
+    Connection connection = null;
 
     public UsersMysqlDao(){
 
         try {
             DriverManager.registerDriver(new Driver());
-            Connection connection = DriverManager.getConnection(
+            connection = DriverManager.getConnection(
                     Config.getUrl(),
                     Config.getUsername(),
                     Config.getPassword()
@@ -27,6 +26,18 @@ public class UsersMysqlDao implements Users {
 
     @Override
     public List<User> all() {
+        String query = "SELECT * FROM users";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next()){
+                System.out.println(rs.getString(4));
+                System.out.println(rs.getString("username"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

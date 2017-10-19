@@ -3,7 +3,7 @@ package Daos;/*
  */
 
 import interfaces.Users;
-import objs.User;
+import models.User;
 
 import java.util.Collections;
 import java.util.List;

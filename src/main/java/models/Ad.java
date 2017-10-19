@@ -1,4 +1,4 @@
-package objs;
+package models;
 
 public class Ad {
     private long id;
