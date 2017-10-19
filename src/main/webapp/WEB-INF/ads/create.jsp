@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
+    <jsp:include page="/partials/head.jsp">
+        <jsp:param name="title" value="Create a new objs.Ad" />
     </jsp:include>
 </head>
 <body>
     <div class="container">
-        <h1>Create a new Ad</h1>
+        <h1>Create a new objs.Ad</h1>
         <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>

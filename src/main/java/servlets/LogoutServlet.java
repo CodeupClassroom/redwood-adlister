@@ -1,3 +1,5 @@
+package servlets;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,7 @@ import java.io.IOException;
 /*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
+@WebServlet(name = "servlets.LogoutServlet", urlPatterns = "/logout")
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().removeAttribute("user");

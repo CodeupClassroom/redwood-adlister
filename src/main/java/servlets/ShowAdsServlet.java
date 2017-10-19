@@ -1,3 +1,8 @@
+package servlets;
+
+import Daos.DaoFactory;
+import objs.Ad;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ShowAdsServlet", urlPatterns = "/ad")
+@WebServlet(name = "servlets.ShowAdsServlet", urlPatterns = "/ad")
 public class ShowAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

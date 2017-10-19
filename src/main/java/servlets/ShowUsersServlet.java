@@ -1,4 +1,4 @@
-/*
+package servlets;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
 import javax.servlet.ServletException;
@@ -8,21 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "CounterServlet", urlPatterns = "/count")
-public class CounterServlet extends HttpServlet {
-    private int counter = 0;
-
+@WebServlet(name = "servlets.ShowUsersServlet", urlPatterns = "/users")
+public class ShowUsersServlet extends HttpServlet {
     protected void doGet(
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException {
-        if (request.getParameter("reset") != null) {
-            counter = 0;
-        }
+        Users users = DaoFactory.getUsersDao(); //new Daos.UsersArrayList(); // DAO
 
-        counter++;
+        request.setAttribute("users", users.all()  /* Real collection (list) */);
 
-        request.setAttribute("counter", counter);
-        request.getRequestDispatcher("counter.jsp").forward(request, response);
+        request.getRequestDispatcher("users.jsp").forward(request, response);
     }
 }

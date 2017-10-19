@@ -1,6 +1,9 @@
-/*
+package Daos;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+
+import interfaces.Users;
+import objs.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +13,11 @@ public class UsersArrayList implements Users {
     public List<User> all() {
         User user = new User();
         user.setId(1);
-        user.setName("Fer");
+        user.setUsername("Fer");
         user.setEmail("fer@codeup.com");
         User zach = new User();
         zach.setId(2);
-        zach.setName("Zach");
+        zach.setUsername("Zach");
         zach.setEmail("zach@codeup.com");
 
         ArrayList<User> users = new ArrayList<>();
