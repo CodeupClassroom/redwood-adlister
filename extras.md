@@ -19,3 +19,11 @@ Response:
 </table>
 
 - Bonus: Make it multidimensional
+
+### Extra JDBC practice.
+
+- Create a search bar in your adlister that search in your database for ads that look like the term you typed in the title or description columns.
+
+#### Hints:
+
+- You will have to create a servlet, another method in the Ads interface, implement the new method in the AdsMySQLDao for this functionality to work.  You can show the filtered results in the /ads page.
