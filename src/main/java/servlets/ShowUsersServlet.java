@@ -1,7 +1,7 @@
 package servlets;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-import Daos.DaoFactory;
+import dao.DaoFactory;
 import interfaces.Users;
 import models.User;
 
@@ -18,7 +18,7 @@ public class ShowUsersServlet extends HttpServlet {
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException {
-        Users users = DaoFactory.getUsersDao(); //new Daos.UsersArrayList(); // DAO
+        Users users = DaoFactory.getUsersDao(); //new dao.UsersArrayList(); // DAO
 
         // Test to see if it inserts the user correctly.
         Long insertId = users.insert(new User("fmendozaro", "fer@codeup.com", "pass"));

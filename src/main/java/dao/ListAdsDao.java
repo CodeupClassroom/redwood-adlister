@@ -1,4 +1,4 @@
-package Daos;
+package dao;
 
 import interfaces.Ads;
 import models.Ad;
