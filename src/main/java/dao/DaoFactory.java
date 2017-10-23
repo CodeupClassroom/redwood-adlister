@@ -6,13 +6,14 @@ import interfaces.Ads;
 import interfaces.Users;
 
 public class DaoFactory {
+    private static Config config = new Config();
     private static Users usersDao;
     private static Ads adsDao;
 
     // factory method
     public static Users getUsersDao() {
         if (usersDao == null) {
-            usersDao = new UsersMysqlDao();
+            usersDao = new UsersMysqlDao(config);
         }
         return  usersDao;
     }

@@ -3,6 +3,7 @@ package dao;
 import com.mysql.cj.jdbc.Driver;
 import interfaces.Users;
 import models.User;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +12,14 @@ public class UsersMysqlDao implements Users {
 
     Connection connection = null;
 
-    public UsersMysqlDao(){
+    public UsersMysqlDao(Config config) {
 
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                    Config.getUrl(),
-                    Config.getUser(),
-                    Config.getPassword()
+                config.getUrl(),
+                config.getUser(),
+                config.getPassword()
             );
         } catch (SQLException e) {
             e.printStackTrace();
@@ -33,7 +34,7 @@ public class UsersMysqlDao implements Users {
     public List<User> all(Long id) {
         String query = "SELECT * FROM users";
 
-        if(id > 0){
+        if (id > 0) {
             query += " WHERE id = " + id;
         }
 
@@ -42,9 +43,9 @@ public class UsersMysqlDao implements Users {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
-            while(rs.next()){
+            while (rs.next()) {
                 users.add(
-                        new User(rs.getLong("id"), rs.getString("username"), rs.getString("email"), rs.getString("password"))
+                    new User(rs.getLong("id"), rs.getString("username"), rs.getString("email"), rs.getString("password"))
                 );
             }
 
@@ -58,13 +59,13 @@ public class UsersMysqlDao implements Users {
     @Override
     public Long insert(User user) {
         Long id = 0L;
-        String query = "INSERT INTO users (username, email, password) values('"+ user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')";
+        String query = "INSERT INTO users (username, email, password) values('" + user.getUsername() + "', '" + user.getEmail() + "', '" + user.getPassword() + "')";
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
             // In order to get the users id you can do the following:
             ResultSet rs = stmt.getGeneratedKeys();
-            if(rs.next()){
+            if (rs.next()) {
                 id = rs.getLong(1);
             }
         } catch (SQLException e) {
