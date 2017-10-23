@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>Hello world</title>
-    <%@ include file="partials/styles.jsp" %>
+    <%@ include file="/WEB-INF/partials/styles.jsp" %>
 </head>
 <body>
-<%@ include file="partials/navbar.jsp"%>
+<%@ include file="/WEB-INF/partials/navbar.jsp"%>
 <h1>${greeting}</h1>
-<%@ include file="partials/scripts.jsp"%>
+<%@ include file="/WEB-INF/partials/scripts.jsp"%>
 </body>
 </html>

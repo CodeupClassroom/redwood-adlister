@@ -6,7 +6,7 @@
     <%@ include file="partials/styles.jsp" %>
 </head>
 <body>
-<%@ include file="partials/navbar.jsp"%>
+<%@ include file="/WEB-INF/partials/navbar.jsp"%>
 <ul>
 <c:forEach var="user" items="${users}">
     <li>
@@ -14,6 +14,6 @@
     </li>
 </c:forEach>
 </ul>
-<%@ include file="partials/scripts.jsp"%>
+<%@ include file="/WEB-INF/partials/scripts.jsp"%>
 </body>
 </html>

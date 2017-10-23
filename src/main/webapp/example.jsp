@@ -18,10 +18,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello world from a JSP file</title>
-    <%@ include file="partials/styles.jsp" %>
+    <%@ include file="/WEB-INF/partials/styles.jsp" %>
 </head>
 <body>
-    <%@ include file="partials/navbar.jsp"%>
+    <%@ include file="/WEB-INF/partials/navbar.jsp"%>
 
     <h1>Hello, <%= request.getParameter("name") %>!</h1>
     <h2>Hello, ${param.name}!</h2>
@@ -48,7 +48,7 @@
     <h1>The current count is ${i + 10}.</h1>
     <h1>The current count is ${param.i + 10}.</h1>
 
-    <%@ include file="partials/scripts.jsp"%>
+    <%@ include file="/WEB-INF/partials/scripts.jsp"%>
 </body>
 </html>
 <%--    } doGet --%>
