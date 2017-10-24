@@ -1,13 +1,12 @@
-package com.codeup.adlister.models;/*
- * This source file is subject to the license that is bundled with this package in the file LICENSE.
- */
-import java.io.Serializable;
+package com.codeup.adlister.models;
 
-public class User implements Serializable {
+public class User {
     private long id;
     private String username;
     private String email;
     private String password;
+
+    public User() {}
 
     public User(long id, String username, String email, String password) {
         this.id = id;
@@ -20,10 +19,6 @@ public class User implements Serializable {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public User() {
-
     }
 
     public long getId() {
@@ -57,5 +52,4 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
