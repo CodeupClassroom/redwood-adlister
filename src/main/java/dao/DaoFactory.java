@@ -1,6 +1,7 @@
-package dao;/*
+/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
+package dao;
 
 import interfaces.Ads;
 import interfaces.Users;
@@ -15,14 +16,13 @@ public class DaoFactory {
         if (usersDao == null) {
             usersDao = new UsersMysqlDao(config);
         }
-        return  usersDao;
+        return usersDao;
     }
 
-    public static Ads getAdsDao(){
-        if(adsDao == null){
-            adsDao = new ListAdsDao();
+    public static Ads getAdsDao() {
+        if (adsDao == null) {
+            adsDao = new MySQLAdsDao(config);
         }
         return adsDao;
     }
-
 }
