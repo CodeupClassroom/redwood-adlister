@@ -1,4 +1,4 @@
-package servlets;
+package controllers;
 
 import dao.DaoFactory;
 import models.Ad;
