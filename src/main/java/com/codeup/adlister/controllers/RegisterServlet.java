@@ -31,6 +31,11 @@ public class RegisterServlet extends HttpServlet {
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         } else {
+            User duplicateUser = DaoFactory.getUsersDao().findByUsername(username);
+            if (duplicateUser != null) {
+                response.sendRedirect("/register");
+                return;
+            }
             // create a new user based off of the submitted information
             User user = new User(username, email, password);
             DaoFactory.getUsersDao().insert(user);
