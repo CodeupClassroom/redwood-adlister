@@ -3,8 +3,8 @@
  */
 package com.codeup.adlister.dao;
 
-import com.mysql.cj.jdbc.Driver;
 import com.codeup.adlister.models.Ad;
+import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,50 +22,58 @@ public class MySQLAdsDao implements Ads {
                 config.getPassword()
             );
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error connecting to the database!", e);
         }
     }
 
     @Override
     public List<Ad> all() {
-        String query = "SELECT * FROM ads";
-        List<Ad> ads = new ArrayList<>();
+        PreparedStatement stmt;
         try {
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                ads.add(new Ad(
-                    rs.getLong("id"),
-                    1,
-                    rs.getString("title"),
-                    rs.getString("description")
-                ));
-            }
+            stmt = connection.prepareStatement("SELECT * FROM ads");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error retrieving all ads.", e);
         }
-        return ads;
     }
 
     @Override
     public Long insert(Ad ad) {
-        Long id = 0L;
-        String query = String.format(
-            "INSERT INTO ads (user_id, title, description) values(1, '%s', '%s')",
-            ad.getTitle(),
-            ad.getDescription()
-        );
         try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = connection.prepareStatement(
+                "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS
+            );
+
+            // Bind the ? with a specific value, by using their indexes
+            stmt.setLong(1, ad.getUserId());
+            stmt.setString(2, ad.getTitle());
+            stmt.setString(3, ad.getDescription());
+
+            stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                id = rs.getLong(1);
-            }
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error creating a new ad.", e);
         }
-        return id;
+    }
+
+    private Ad extractAd(ResultSet rs) throws SQLException {
+        return new Ad(
+            rs.getLong("id"),
+            rs.getLong("user_id"),
+            rs.getString("title"),
+            rs.getString("description")
+        );
+    }
+
+    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()) {
+            ads.add(extractAd(rs));
+        }
+        return ads;
     }
 }
