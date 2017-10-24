@@ -9,7 +9,8 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user}!</h1>
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <p>Your registered email is ${user.email}</p>
     </div>
 
 </body>
