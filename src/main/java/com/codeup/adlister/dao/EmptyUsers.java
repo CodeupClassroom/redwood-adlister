@@ -1,9 +1,9 @@
 /*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-package dao;
+package com.codeup.adlister.dao;
 
-import models.User;
+import com.codeup.adlister.models.User;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,7 +1,7 @@
 /*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-package dao;
+package com.codeup.adlister.dao;
 
 public class DaoFactory {
     private static Config config = new Config();

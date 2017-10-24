@@ -1,4 +1,4 @@
-package controllers;/*
+package com.codeup.adlister.controllers;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
 import javax.servlet.ServletException;

@@ -1,9 +1,9 @@
-package controllers;/*
+package com.codeup.adlister.controllers;/*
  * This source file is subject to the license that is bundled with this package in the file LICENSE.
  */
-import dao.DaoFactory;
-import dao.Users;
-import models.User;
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

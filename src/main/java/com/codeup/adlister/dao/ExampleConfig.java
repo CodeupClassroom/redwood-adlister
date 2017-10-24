@@ -1,4 +1,4 @@
-package dao;
+package com.codeup.adlister.dao;
 
 // This is an example of the Config file.
 public class ExampleConfig {
